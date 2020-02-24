@@ -1,5 +1,12 @@
 # new-page
 
+[![changelog][changelog-image]][changelog-url] [![license][license-image]][license-url]
+
+[license-image]: https://img.shields.io/github/license/ufologist/new-page.svg
+[license-url]: https://github.com/ufologist/new-page/blob/master/LICENSE
+[changelog-image]: https://img.shields.io/badge/CHANGE-LOG-blue.svg?style=flat-square
+[changelog-url]: https://github.com/ufologist/new-page/blob/master/CHANGELOG.md
+
 适用于快速创建独立页面的模版工程
 
 ## 适用情况
