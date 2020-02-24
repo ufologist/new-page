@@ -85,6 +85,13 @@
 * 启动 HTTPS: `npm start -- --https --__page__=${页面名称}`
 * 自定义端口: `npm start -- --port=${端口} --__page__=${页面名称}`
 
+## 示例
+
+* demo 页面
+  * [开发页面需要写哪些代码?](./src/pages/demo/README.md)
+  * [常用公共库使用示例]()
+* [第三方库筛选记录](./src/pages/demo/lib.md)
+
 ## TODO
 
 * .browserslistrc 规则
