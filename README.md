@@ -81,6 +81,10 @@
 2. 该页面的所有文件放置在 `src/pages/${页面名称}` 目录下
 3. 开始开发 `npm start -- --__page__=${页面名称}`, 例如: `npm start -- --__page__=demo1`
 
+其他命令
+* 启动 HTTPS: `npm start -- --https --__page__=${页面名称}`
+* 自定义端口: `npm start -- --port=${端口} --__page__=${页面名称}`
+
 ## TODO
 
 * .browserslistrc 规则
