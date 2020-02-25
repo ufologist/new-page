@@ -42,3 +42,11 @@
 * https://greensock.com 收费
 * https://github.com/airbnb/lottie-web 如果设计师在 AE 做了一个动画让你用代码实现
 * https://github.com/sergey-pimenov/awesome-web-animation
+
+## 加密算法
+
+需求: 依赖少/适用于 Web 和 Node
+* https://github.com/blueimp/JavaScript-MD5
+
+备选
+* https://github.com/brix/crypto-js

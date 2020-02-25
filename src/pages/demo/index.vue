@@ -44,6 +44,11 @@
         <pre>{{ dateString }}</pre>
     </div>
 
+    <h2 class="index__section"><a href="https://github.com/blueimp/JavaScript-MD5" target="_blank">MD5</a></h2>
+    <div class="index__example">
+        <pre>{{ md5Hex }}</pre>
+    </div>
+
     <h2 class="index__section"><a href="https://github.com/cure53/DOMPurify" target="_blank">XSS sanitizer</a></h2>
     <div class="index__example">
         <label style="font-size: 0.3em"><input v-model="enableXssSanitizer" type="checkbox">Prevent XSS attacks</label>
@@ -119,6 +124,8 @@ import isPlainObject from 'lodash.isplainobject';
 import DOMPurify from 'dompurify';
 // 处理日期
 import dayjs from 'dayjs';
+// MD5
+import md5 from 'blueimp-md5';
 // 本地存储: localStorage/sessionStorage
 import store from 'store2';
 // 二维码
@@ -145,6 +152,7 @@ export default {
             os: inWhichBrowser.os,
             browser: inWhichBrowser.browser,
             dateString: dayjs().format('YYYY-MM-DD'),
+            md5Hex: md5('123456'),
             demoStore: null,
             backendData: null,
             qrcodeUrl: null,
