@@ -207,7 +207,7 @@ export default {
                 alert('wx.config error: ' + JSON.stringify(res));
             });
 
-            wx.ready(function(){
+            wx.ready(function() {
                 alert('wx.ready');
             });
 

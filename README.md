@@ -92,6 +92,13 @@
   * [常用公共库使用示例]()
 * [第三方库筛选记录](./src/pages/demo/lib.md)
 
+## 封装的公共逻辑
+
+* src/lib
+  * `http-client.js` 封装 HTTP 方法
+  * `validator.js` 简化 validatorjs 用于验证单个值 
+  * `wx-js-sdk.js` 封装了微信 JSSDK 的功能
+
 ## TODO
 
 * .browserslistrc 规则
