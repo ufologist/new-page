@@ -50,3 +50,16 @@
 
 备选
 * https://github.com/brix/crypto-js
+
+## Loader
+
+需求: 动态加载 JS/CSS 文件
+* https://github.com/muicss/loadjs
+
+备选
+* https://github.com/ded/script.js 只能加载 JS 文件
+* https://github.com/youzan/tiny-loader.js 自动判断文件类型(不能指定)
+* https://github.com/getify/LABjs
+* https://github.com/SlexAxton/yepnope.js/
+* https://github.com/CapMousse/include.js 支持 CSS
+* https://github.com/filamentgroup/loadCSS 只能加载 CSS 文件
