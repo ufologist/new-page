@@ -65,7 +65,7 @@
 
     <h2 class="index__section"><a href="https://github.com/madrobby/zepto" target="_blank">DOM</a></h2>
     <div class="index__example">
-        <div ref="dom"></div>
+        <pre ref="dom"></pre>
         <button type="button" @click="updateDom">Update DOM</button>
     </div>
 
@@ -185,7 +185,7 @@ export default {
     },
     methods: {
         updateDom: function() {
-            $(this.$refs.dom).html(`updated: ${new Date().getTime()}`);
+            $(this.$refs.dom).text(`updated: ${new Date().getTime()}`);
         },
         generateQrcode: function() {
             QRCode.toDataURL(`https://baidu.com?_=${new Date().getTime()}`, (error, dataUrl) => {
