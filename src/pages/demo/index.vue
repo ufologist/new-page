@@ -69,6 +69,12 @@
         <button type="button" @click="updateDom">Update DOM</button>
     </div>
 
+    <h2 class="index__section"><a href="https://github.com/zenorocha/clipboard.js" target="_blank">Clipboard</a></h2>
+    <div class="index__example">
+        <button type="button" @click="initCopy">Init Copy</button>
+        <button class="js-copy-trigger" type="button" data-clipboard-text="Just because you can doesn't mean you should — clipboard.js">Copy</button>
+    </div>
+
     <h2 class="index__section"><a href="https://github.com/juliangarnier/anime/" target="_blank">Animation</a> | <a href="https://daneden.github.io/animate.css/">Animate.css</a></h2>
     <div class="index__example">
         <div ref="animationDom" style="width:28px;height:28px;background-color:#FF8F42"></div>
@@ -130,6 +136,8 @@ import md5 from 'blueimp-md5';
 import store from 'store2';
 // 二维码
 import QRCode from 'qrcode';
+// 复制
+import Clipboard from 'clipboard';
 // DOM 生成图片
 import html2canvas from 'html2canvas';
 // 动画
@@ -226,6 +234,21 @@ export default {
                 now: new Date().getTime()
             });
             this.demoStore = store.get('demo');
+        },
+        initCopy: function() {
+            var clipboard = new Clipboard('.js-copy-trigger');
+            clipboard.on('success', function(event) {
+                event.clearSelection();
+                alert('已复制');
+
+                console.info('Action:', event.action);
+                console.info('Text:', event.text);
+                console.info('Trigger:', event.trigger);
+            });
+            clipboard.on('error', function(event) {
+                console.error('Action:', event.action);
+                console.error('Trigger:', event.trigger);
+            });
         },
         animate: function() {
             anime({
