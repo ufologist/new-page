@@ -24,6 +24,7 @@
     "html2canvas": "1.0.0-alpha.12",
     "in-which-browser": "^1.0.0",
     "js-cookie": "^2.2.1",
+    "loadjs": "^4.2.0",
     "lodash.isplainobject": "^4.0.6",
     "model-adapter": "0.0.2",
     "nprogress": "^0.2.0",

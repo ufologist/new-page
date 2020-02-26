@@ -81,6 +81,13 @@
         <button class="index__animate-shake" type="button" @click="animate">Animate</button>
     </div>
 
+    <h2 class="index__section"><a href="https://github.com/muicss/loadjs" target="_blank">Loader JS/CSS</a></h2>
+    <div class="index__example">
+        <div ref="lottieLoading"></div>
+        <div ref="lottieContainer"></div>
+        <button type="primary" @click="loadJs">Load Js(lottie)</button>
+    </div>
+
     <h2 class="index__section"><a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html" target="_blank">WX-JSSDK</a></h2>
     <div class="index__example">
         <button type="button" @click="wxConfig">wx.config</button>
@@ -142,6 +149,8 @@ import Clipboard from 'clipboard';
 import html2canvas from 'html2canvas';
 // 动画
 import anime from 'animejs';
+// 动态加载 JS/CSS 文件(可用于优化性能, 加载第三方独立库, 例如微信JSSDK), 推荐将 loadjs 整个 inline 到 HTML 里面
+import load from 'loadjs';
 // 增强数据兼容
 import ModelAdapter from 'model-adapter';
 
@@ -254,6 +263,23 @@ export default {
             anime({
                 targets: this.$refs.animationDom,
                 translateX: anime.random(0, 200)
+            });
+        },
+        loadJs: function() {
+            this.$refs.lottieLoading.textContent = 'loading...';
+            load('//cdn.bootcss.com/bodymovin/5.6.4/lottie.min.js', () => {
+                this.$refs.lottieContainer.textContent = '';
+                var animation = lottie.loadAnimation({
+                    container: this.$refs.lottieContainer,
+                    path: '//cdn.jsdelivr.net/gh/airbnb/lottie-web@48ceb652451c08c4f0f29a7df7f6442f630d0570/demo/adrock/data.json',
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    name: 'Hello World'
+                });
+                animation.addEventListener('data_ready', () => {
+                    this.$refs.lottieLoading.textContent = '';
+                });
             });
         },
         html2canvas: function() {
