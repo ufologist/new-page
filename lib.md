@@ -63,3 +63,19 @@
 * https://github.com/SlexAxton/yepnope.js/
 * https://github.com/CapMousse/include.js 支持 CSS
 * https://github.com/filamentgroup/loadCSS 只能加载 CSS 文件
+
+## 格式化数字
+
+需求: 格式化数字
+* https://github.com/Mottie/javascript-number-formatter 比较像 Java 的 [DecimalFormat](https://docs.oracle.com/javase/9/docs/api/java/text/DecimalFormat.html)
+
+备选
+* https://github.com/scurker/currency.js 可以正确的处理浮点精度问题: `2.51 + 0.01 => 2.5199999999999996` `currency(2.51).add(0.01) => 2.52`
+* https://github.com/nashdot/accounting-js
+* https://github.com/BenjaminVanRyseghem/numbro
+* https://github.com/componitable/format-number
+* https://github.com/adamwdraper/Numeral-js 没怎么更新维护了
+* https://github.com/ericelliott/moneysafe safe money calculations in JS
+* https://github.com/sarahdayan/dinero.js
+* https://github.com/AndreasPizsa/parse-decimal-number
+* https://github.com/papandreou/node-cldr extracting data from CLDR (the Unicode Common Locale Data Repository)
