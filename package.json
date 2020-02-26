@@ -28,6 +28,7 @@
     "lodash.isplainobject": "^4.0.6",
     "model-adapter": "0.0.2",
     "nprogress": "^0.2.0",
+    "number-format.js": "^2.0.9",
     "qrcode": "^1.4.4",
     "qsman": "0.0.4",
     "standard-http-client": "0.0.4",

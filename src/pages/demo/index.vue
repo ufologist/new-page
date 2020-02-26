@@ -44,6 +44,11 @@
         <pre>{{ dateString }}</pre>
     </div>
 
+    <h2 class="index__section"><a href="https://github.com/Mottie/javascript-number-formatter" target="_blank">Number Format</a></h2>
+    <div class="index__example">
+        <pre>{{ numberString }}</pre>
+    </div>
+
     <h2 class="index__section"><a href="https://github.com/blueimp/JavaScript-MD5" target="_blank">MD5</a></h2>
     <div class="index__example">
         <pre>{{ md5Hex }}</pre>
@@ -137,6 +142,8 @@ import isPlainObject from 'lodash.isplainobject';
 import DOMPurify from 'dompurify';
 // 处理日期
 import dayjs from 'dayjs';
+// 处理数字
+import formatNumber from 'number-format.js';
 // MD5
 import md5 from 'blueimp-md5';
 // 本地存储: localStorage/sessionStorage
@@ -169,6 +176,7 @@ export default {
             os: inWhichBrowser.os,
             browser: inWhichBrowser.browser,
             dateString: dayjs().format('YYYY-MM-DD'),
+            numberString: formatNumber('#,###.00', 1234567890.0987654321),
             md5Hex: md5('123456'),
             demoStore: null,
             backendData: null,
