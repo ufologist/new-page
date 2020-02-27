@@ -91,11 +91,17 @@
         <button class="index__animate-shake" type="button" @click="animate">Animate</button>
     </div>
 
-    <h2 class="index__section"><a href="https://github.com/muicss/loadjs" target="_blank">Loader JS/CSS</a></h2>
+    <h2 class="index__section"><a href="https://github.com/muicss/loadjs" target="_blank">Load JS/CSS</a></h2>
     <div class="index__example">
         <div ref="lottieLoading"></div>
         <div ref="lottieContainer"></div>
-        <button type="primary" @click="loadJs">Load Js(lottie)</button>
+        <button type="button" @click="loadJs">Load Js(lottie)</button>
+    </div>
+
+    <h2 class="index__section"><a href="https://github.com/blueimp/JavaScript-Load-Image" target="_blank">Load Image</a></h2>
+    <div class="index__example">
+        <pre>{{ imageMeta }}</pre>
+        <button type="button" @click="loadImage">Load Image</button>
     </div>
 
     <h2 class="index__section"><a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html" target="_blank">WX-JSSDK</a></h2>
@@ -165,6 +171,8 @@ import html2canvas from 'html2canvas';
 import anime from 'animejs';
 // 动态加载 JS/CSS 文件(可用于优化性能, 加载第三方独立库, 例如微信JSSDK), 推荐将 loadjs 整个 inline 到 HTML 里面
 import load from 'loadjs';
+// 加载图片
+import loadImage from 'blueimp-load-image';
 // 增强数据兼容
 import ModelAdapter from 'model-adapter';
 
@@ -186,6 +194,7 @@ export default {
             numberString: formatNumber('#,###.00', 1234567890.0987654321),
             md5Hex: md5('123456'),
             versionCompareResult: compareVersions.compare('10.1.8', '10.0.4', '>'),
+            imageMeta: null,
             demoStore: null,
             backendData: null,
             qrcodeUrl: null,
@@ -296,6 +305,17 @@ export default {
                 animation.addEventListener('data_ready', () => {
                     this.$refs.lottieLoading.textContent = '';
                 });
+            });
+        },
+        loadImage: function() {
+            this.imageMeta = 'loading...';
+            loadImage('//vuejs.org/images/logo.png', (imgOrCanvasOrEvent, data) => {
+                if (imgOrCanvasOrEvent.type === 'error') {
+                    this.imageMeta = 'error';
+                    console.error('Error loading image', imgOrCanvasOrEvent);
+                } else {
+                    this.imageMeta = data;
+                }
             });
         },
         html2canvas: function() {
