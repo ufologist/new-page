@@ -54,6 +54,11 @@
         <pre>{{ md5Hex }}</pre>
     </div>
 
+    <h2 class="index__section"><a href="https://github.com/omichelsen/compare-versions" target="_blank">Compare semver</a></h2>
+    <div class="index__example">
+        <pre>{{ versionCompareResult }}</pre>
+    </div>
+
     <h2 class="index__section"><a href="https://github.com/cure53/DOMPurify" target="_blank">XSS sanitizer</a></h2>
     <div class="index__example">
         <label style="font-size: 0.3em"><input v-model="enableXssSanitizer" type="checkbox">Prevent XSS attacks</label>
@@ -146,6 +151,8 @@ import dayjs from 'dayjs';
 import formatNumber from 'number-format.js';
 // MD5
 import md5 from 'blueimp-md5';
+// 比较版本号
+import compareVersions from 'compare-versions';
 // 本地存储: localStorage/sessionStorage
 import store from 'store2';
 // 二维码
@@ -178,6 +185,7 @@ export default {
             dateString: dayjs().format('YYYY-MM-DD'),
             numberString: formatNumber('#,###.00', 1234567890.0987654321),
             md5Hex: md5('123456'),
+            versionCompareResult: compareVersions.compare('10.1.8', '10.0.4', '>'),
             demoStore: null,
             backendData: null,
             qrcodeUrl: null,

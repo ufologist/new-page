@@ -50,6 +50,27 @@
 
 备选
 * https://github.com/brix/crypto-js
+* https://github.com/h2non/jshashes
+* https://github.com/emn178/js-md5
+
+## 本地存储
+
+需求: key/value 存储
+* https://github.com/nbubna/store
+
+备选
+* https://github.com/ZaDarkSide/simpleStorage
+* https://github.com/marcuswestin/store.js
+* https://github.com/localForage/localForage
+
+## 比较版本
+
+需求: 比较 semver 版本号
+* https://github.com/omichelsen/compare-versions
+
+备选
+* https://github.com/alanclarke/semverbs
+* https://github.com/npm/node-semver The semver parser for node (the one npm uses)
 
 ## Loader
 
