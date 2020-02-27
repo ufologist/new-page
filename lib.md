@@ -109,7 +109,7 @@
 备选
 * https://github.com/ffx0s/xcrop 适合移动端, 缺少旋转功能
 * https://github.com/dgmpk/mcropper 和 xcrop 差不多, API 少一些
-* https://github.com/duyanpeng/vue-quick-cropper 样式仿照微信, 不能自定义裁剪框
+* https://github.com/duyanpeng/vue-quick-cropper 样式仿照微信, 不能自定义裁剪框, [更多实用组件: 刷新加载loadmore/picker/upload/tabs/swiper](https://github.com/duyanpeng/garen "盖伦UI")
 * https://github.com/Foliotek/Croppie 参与项目的人挺多的, 可以在移动端使用
 * https://github.com/shpontex/cropme 支持移动端, 没有限制边界
 * https://github.com/AlloyTeam/AlloyCrop
