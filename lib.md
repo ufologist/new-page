@@ -100,3 +100,23 @@
 * https://github.com/sarahdayan/dinero.js
 * https://github.com/AndreasPizsa/parse-decimal-number
 * https://github.com/papandreou/node-cldr extracting data from CLDR (the Unicode Common Locale Data Repository)
+
+## 图片裁剪
+
+需求: 适合移动端(参考 iOS 原生的图片裁剪功能)/移动图片而非裁剪框/支持手势缩放/限制不出边界范围
+* https://github.com/newbieYoung/Simple-Crop
+
+备选
+* https://github.com/ffx0s/xcrop 适合移动端, 缺少旋转功能
+* https://github.com/dgmpk/mcropper 和 xcrop 差不多, API 少一些
+* https://github.com/duyanpeng/vue-quick-cropper 样式仿照微信, 不能自定义裁剪框
+* https://github.com/Foliotek/Croppie 参与项目的人挺多的, 可以在移动端使用
+* https://github.com/shpontex/cropme 支持移动端, 没有限制边界
+* https://github.com/AlloyTeam/AlloyCrop
+* https://github.com/jamesssooi/Croppr.js 小巧, 只能获取裁剪的属性数据, 属于 PC 端的交互模式, 不适于移动端场景
+* https://github.com/supnate/icropper 比较小巧, 属于 PC 端的交互模式, 不适于移动端场景, 没有文档
+* https://github.com/fengyuanchen/cropperjs 适合 PC 端
+* https://github.com/peterver/vanilla-image-cropper 适合 PC 端
+* https://github.com/WoollyMittens/useful-cropper 适合 PC 端
+* https://github.com/denis-kalinichenko/js-cropper 不支持移动端手势
+* https://github.com/wotermelon/vue-painting 类似 QQ 截图工具
