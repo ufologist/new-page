@@ -101,6 +101,7 @@
     <h2 class="index__section"><a href="https://github.com/blueimp/JavaScript-Load-Image" target="_blank">Load Image</a></h2>
     <div class="index__example">
         <pre>{{ imageMeta }}</pre>
+        <div ref="loadedImage"></div>
         <button type="button" @click="loadImage">Load Image</button>
     </div>
 
@@ -314,6 +315,8 @@ export default {
                     this.imageMeta = 'error';
                     console.error('Error loading image', imgOrCanvasOrEvent);
                 } else {
+                    this.$refs.loadedImage.innerHTML = '';
+                    this.$refs.loadedImage.appendChild(imgOrCanvasOrEvent);
                     this.imageMeta = data;
                 }
             });
