@@ -35,13 +35,25 @@ module.exports = {
             name: 'pageTitle',
             message: '请输入你要创建的页面标题',
             default: '页面标题'
+        }, {
+            name: 'router',
+            message: '是否需要使用路由(你有"多个页面"时才需要使用)',
+            type: 'confirm',
+            default: false
         }]
     },
     actions: [{
         type: 'add',
-        files: '**'
+        files: '**',
+        filters: {
+            'pages/home/**': 'router',
+            'pages/home/res/.gitkeep': 'router'
+        }
     }],
     completed: function() {
-        this.showProjectTips()
+        this.showProjectTips();
+        console.info('\n----请执行下面的命令开始开发----');
+        console.info(this.chalk.blue(`npm start -- --__page__=${this.answers.pageName}`));
+        console.info('--------------------------------');
     }
 }

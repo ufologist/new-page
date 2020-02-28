@@ -113,6 +113,7 @@
 * https://github.com/Foliotek/Croppie 参与项目的人挺多的, 可以在移动端使用
 * https://github.com/shpontex/cropme 支持移动端, 没有限制边界
 * https://github.com/AlloyTeam/AlloyCrop
+* https://github.com/tapmodo/Jcrop 属于 PC 端的交互模式
 * https://github.com/jamesssooi/Croppr.js 小巧, 只能获取裁剪的属性数据, 属于 PC 端的交互模式, 不适于移动端场景
 * https://github.com/supnate/icropper 比较小巧, 属于 PC 端的交互模式, 不适于移动端场景, 没有文档
 * https://github.com/fengyuanchen/cropperjs 适合 PC 端

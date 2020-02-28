@@ -1,11 +1,7 @@
 <template>
-<div class="index">
-    <% if (router) { %>
-    <router-view></router-view>
-    <% } else { %>
-    <h1 class="index__title"><%= pageTitle %></h1>
+<div class="home">
+    <h1 class="home__title"><%= pageTitle %></h1>
     <button type="button">按钮</button>
-    <% } %>
 </div>
 </template>
 
@@ -21,7 +17,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.index {
+.home {
     &__title {
         font-size: 36px;
     }

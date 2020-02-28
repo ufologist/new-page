@@ -57,26 +57,52 @@
 
 1. 新建页面: `npm run new-page`
 
-   ```shell
-   > npm run new-page
-   
-   > new-page@1.0.0 new-page /new-page
-   > sao ./scaffold/page-template ./src/pages
-   
-   ? 请输入你要创建的页面名称(英文) demo1
-   ? 请输入你要创建的页面标题 页面标题
-   info Created src/pages/demo1/.env.production
-   info Created src/pages/demo1/.env.development
-   info Created src/pages/demo1/README.md
-   info Created src/pages/demo1/.env.stage
-   info Created src/pages/demo1/.env
-   info Created src/pages/demo1/.env.test
-   info Created src/pages/demo1/res/.gitkeep
-   info Created src/pages/demo1/index.vue
-   info Created src/pages/demo1/index.html
-   info Created src/pages/demo1/index.js
-   success Generated into /new-page/src/pages/demo1
-   ```
+   * "单页面"(不使用路由)
+      ```shell
+      > npm run new-page
+      
+      > new-page@1.0.0 new-page /new-page
+      > sao ./scaffold/page-template ./src/pages
+      
+      ? 请输入你要创建的页面名称(英文) demo1
+      ? 请输入你要创建的页面标题 页面标题
+      ? 是否需要使用路由(你有"多个页面"时才需要使用) No
+      info Created src/pages/demo1/index.js
+      info Created src/pages/demo1/index.vue
+      info Created src/pages/demo1/index.html
+      info Created src/pages/demo1/.env
+      info Created src/pages/demo1/.env.development
+      info Created src/pages/demo1/.env.test
+      info Created src/pages/demo1/.env.stage
+      info Created src/pages/demo1/.env.production
+      info Created src/pages/demo1/res/.gitkeep
+      info Created src/pages/demo1/README.md
+      success Generated into /new-page/src/pages/demo1
+      ```
+    * "多页面"(使用路由)
+      ```shell
+      > npm run new-page
+      
+      > new-page@1.0.0 new-page /new-page
+      > sao ./scaffold/page-template ./src/pages
+      
+      ? 请输入你要创建的页面名称(英文) demo1
+      ? 请输入你要创建的页面标题 页面标题
+      ? 是否需要使用路由(你有"多个页面"时才需要使用) Yes
+      info Created src/pages/demo1/index.js
+      info Created src/pages/demo1/index.vue
+      info Created src/pages/demo1/index.html
+      info Created src/pages/demo1/.env
+      info Created src/pages/demo1/.env.development
+      info Created src/pages/demo1/.env.test
+      info Created src/pages/demo1/.env.stage
+      info Created src/pages/demo1/.env.production
+      info Created src/pages/demo1/pages/home/home.vue
+      info Created src/pages/demo1/pages/home/res/.gitkeep
+      info Created src/pages/demo1/res/.gitkeep
+      info Created src/pages/demo1/README.md
+      success Generated into /new-page/src/pages/demo1
+      ```
 
 2. 该页面的所有文件放置在 `src/pages/${页面名称}` 目录下
 3. 开始开发 `npm start -- --__page__=${页面名称}`, 例如: `npm start -- --__page__=demo1`
@@ -96,6 +122,7 @@
 
 * src/lib
   * `http-client.js` 封装 HTTP 方法
+  * `base-router.js` 基础路由器
   * `validator.js` 简化 validatorjs 用于验证单个值 
   * `wx-js-sdk.js` 封装了微信 JSSDK 的功能
 
