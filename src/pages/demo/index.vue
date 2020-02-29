@@ -164,7 +164,7 @@ import compareVersions from 'compare-versions';
 import store from 'store2';
 // 二维码
 import QRCode from 'qrcode';
-// 复制
+// 复制 sindresorhus/copy-text-to-clipboard 更小巧
 import Clipboard from 'clipboard';
 // DOM 生成图片
 import html2canvas from 'html2canvas';
