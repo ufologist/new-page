@@ -34,3 +34,10 @@ new Vue({
         return h(Index);
     }
 }).$mount('.js-app');
+
+// 移除骨架屏
+try {
+    document.body.removeChild(document.querySelector('.skeleton'));
+} catch (error) {
+    console.error('remove skeleton error', error);
+}
