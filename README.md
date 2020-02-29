@@ -128,7 +128,6 @@
 
 ## TODO
 
-* .browserslistrc 规则
 * @babel/polyfill
 * commitizen 规则
 * eslint 规则

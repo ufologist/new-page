@@ -5,10 +5,13 @@ var yargs = require('yargs');
 // var __page__ = argv.__page__;
 
 module.exports = {
-    plugins: [
-        require('postcss-hairline'),
-        require('postcss-px2rem')({
+    plugins: {
+        // 如果不自己使用 postcss 配置, vue-cli3 默认是开启了 autoprefixer
+        // https://github.com/vuejs/vue-cli/blob/1a0b59142aa8797810ca90705290d960a4ee6d1e/packages/%40vue/cli-service/lib/config/css.js#L87
+        autoprefixer: {},
+        'postcss-hairline': {},
+        'postcss-px2rem': {
             remUnit: 75 // 设计稿宽度除以 10, 参考 https://github.com/amfe/article/issues/17
-        })
-    ]
+        }
+    }
 };
