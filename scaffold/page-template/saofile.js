@@ -1,6 +1,8 @@
 var path = require('path');
 var fs = require('fs');
 
+var clipboardy = require('clipboardy');
+
 module.exports = {
     prompts: function() {
         return [{
@@ -52,8 +54,13 @@ module.exports = {
     }],
     completed: function() {
         this.showProjectTips();
-        console.info('\n----请执行下面的命令开始开发----');
-        console.info(this.chalk.blue(`npm start -- --__page__=${this.answers.pageName}`));
-        console.info('--------------------------------');
+
+        // copy to system clipboard
+        var cmd = `npm start -- --__page__=${this.answers.pageName}`;
+        clipboardy.writeSync(cmd);
+
+        console.info('\n----请执行下面的命令开始开发(已为你复制好了)----');
+        console.info(this.chalk.blue(cmd));
+        console.info('------------------------------------------------');
     }
 }
