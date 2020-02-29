@@ -29,6 +29,7 @@
 采取**组合环境变量**的方式, 在页面中插入公共逻辑
 * viewport
 * 移动端适配
+* 骨架屏(默认 loading 效果)
 * 异常监控
 * 调试助手
 * 埋点统计
@@ -42,6 +43,7 @@
 * `process.env.VUE_APP_ANALYTICS_SCRIPT`: 接入统计分析的脚本(例如百度统计), 需要在页面文件夹的 `.env` 中覆盖, 如果不设置会用默认值
 * `process.env.VUE_APP_PAGE_DATA_SCRIPT`: 全局数据 `PAGE_DATA` 的值, 需要在页面文件夹的 `.env` 中覆盖
 * `process.env.VUE_APP_API_ROOT`: HTTP 接口的 root 地址, 需要在页面文件夹的 `.env` 中覆盖, 如果不设置会用默认值
+* `process.env.VUE_APP_COMMON_ERROR_PAGE`: 通用错误页面
 
 ### 每个页面拥有自己独立的环境变量
 
