@@ -297,7 +297,7 @@ export default {
                 this.$refs.lottieContainer.textContent = '';
                 var animation = lottie.loadAnimation({
                     container: this.$refs.lottieContainer,
-                    path: '//cdn.jsdelivr.net/gh/airbnb/lottie-web@48ceb652451c08c4f0f29a7df7f6442f630d0570/demo/adrock/data.json',
+                    path: 'https://cdn.jsdelivr.net/gh/airbnb/lottie-web@48ceb652451c08c4f0f29a7df7f6442f630d0570/demo/adrock/data.json',
                     renderer: 'svg',
                     loop: true,
                     autoplay: true,

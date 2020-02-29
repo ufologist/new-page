@@ -20,7 +20,10 @@ if (process.env.NODE_ENV === 'production') {
 var router = new BaseRouter({
     routes: [{
         path: '/',
-        component: Home
+        component: Home,
+        meta: {
+            title: 'Home'
+        }
     }]
 });
 <% } %>
