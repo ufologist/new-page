@@ -18,23 +18,29 @@ var queryParam = new QsMan(window.location.search).getObject();
 export default class BaseRouter extends VueRouter {
     /**
      * 
+     * 未匹配到路由规则时的 redirect 机制(404机制)
+     * - 什么都不设置时, 跳转到默认页面
+     * - 当 `extOptions.redirect404Page` 设置为非空字符串时, 跳转到 `redirect404Page` 指定的页面
+     * - 当 `extOptions.redirect404Page` 设置为 `falsy` 时, 重定向到默认的 path: `/`
+     * - 当 `extOptions.redirect404Page` 设置为 `falsy` 并同时设置 `extOptions.redirect404Path` 时, 重定向到 `redirect404Path` 指定的 path
+     * 
      * @param {*} options 与 VueRouter 一样
      * @param {object} [extOptions] 扩展选项
-     * @param {boolean} [extOptions.enable404] 启用默认的未匹配路由规则
-     * @param {string} [extOptions.page404Url] 404 页面的 URL
+     * @param {string} [extOptions.redirect404Page] 未匹配到路由规则时跳转到的页面
+     * @param {string} [extOptions.redirect404Path] 未匹配到路由规则时重定向到的 path
      */
     constructor(options, extOptions = {}) {
-        var enable404 = typeof extOptions.enable404 !== 'undefined' ? extOptions.enable404 : true;
-        var page404Url = extOptions.page404Url || `${process.env.VUE_APP_COMMON_ERROR_PAGE}?message=${encodeURIComponent('抱歉，你访问的页面不存在')}&errorCode=404`;
+        var redirect404Page = typeof extOptions.redirect404Page !== 'undefined' ? extOptions.redirect404Page : `${process.env.VUE_APP_COMMON_ERROR_PAGE}?message=${encodeURIComponent('抱歉，你访问的页面不存在')}&errorCode=404`;
+        var redirect404Path = extOptions.redirect404Path || '/';
 
         options.routes.push({
             path: '*',
             redirect: function(to) {
-                if (enable404) {
-                    window.location.replace(page404Url);
-                } else { // 返回首页
+                if (redirect404Page) { // 跳转到某个页面
+                    window.location.replace(redirect404Page);
+                } else { // 重定向到某个 path
                     return {
-                        path: '/',
+                        path: redirect404Path,
                         query: to.query
                     };
                 }
