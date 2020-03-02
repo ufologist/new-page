@@ -113,6 +113,9 @@ module.exports = {
     },
     productionSourceMap: false,
     chainWebpack: function(webpackConfig) {
+        var isDev = process.env.NODE_ENV === 'development';
+        var isProd = process.env.NODE_ENV === 'production';
+
         console.log('----DefinePlugin----');
         console.log(resolveClientEnv(publicPath));
         console.log('--------------------');
@@ -123,7 +126,33 @@ module.exports = {
                             .use('imports-loader/zepto')
                             .loader('imports-loader?this=>window');
 
+        // 代码的全局注释
         webpackConfig.plugin('banner')
                      .use(webpack.BannerPlugin, [`${pkg.name}/${__page__} | ${latestGitLog} | (c) ${pkg.author}`]);
+
+        if (isProd) {
+            // 压缩图片
+            var imageLoaderOptions = {
+                optipng: {
+                    // optipng 压缩很慢, 而且压缩的效果不好, 只使用 pngquant 就好了
+                    enabled: false,
+                    optimizationLevel: 7
+                },
+                gifsicle: {
+                    interlaced: false
+                },
+                pngquant: {
+                    quality: '75-90',
+                    speed: 4
+                },
+                mozjpeg: {
+                    progressive: true,
+                    quality: 75
+                }
+            };
+            webpackConfig.module.rule('images')
+                                .use('image-loader')
+                                .loader('image-webpack-loader-coding-net-vendor').options(imageLoaderOptions);
+        }
     }
 };
