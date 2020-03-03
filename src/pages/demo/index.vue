@@ -18,8 +18,7 @@
     <h2 class="index__section"><a href="https://github.com/skaterdav85/validatorjs" target="_blank">Validator</a></h2>
     <div class="index__example">
         <input type="text" v-model="input" placeholder="email">
-        <div v-if="isValid">isValid: {{ isValid }}</div>
-        <div v-if="error" style="color:red">{{ error }}</div>
+        <div v-if="errorMessage" style="color:red">{{ errorMessage }}</div>
         <button type="button" @click="validate">validate</button>
     </div>
 
@@ -211,8 +210,7 @@ export default {
             xss: '<img src=x onerror=alert(1)//>',
             model: null,
             input: '',
-            isValid: null,
-            error: null,
+            errorMessage: null,
             pageData: window.PAGE_DATA,
             isPlainObject: isPlainObject({})
         };
@@ -353,13 +351,7 @@ export default {
             });
         },
         validate: function() {
-            if (validator(this.input, 'required|email')) {
-                this.isValid = true;
-                this.error = null;
-            } else {
-                this.isValid = false;
-                this.error = 'required|email';
-            }
+            this.errorMessage = validator(this.input, 'required|email');
         }
     }
 };
