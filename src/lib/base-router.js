@@ -30,6 +30,7 @@ export default class BaseRouter extends VueRouter {
      * @param {string} [extOptions.redirect404Path] 未匹配到路由规则时重定向到的 path
      */
     constructor(options, extOptions = {}) {
+        // 404 机制
         var redirect404Page = typeof extOptions.redirect404Page !== 'undefined' ? extOptions.redirect404Page : `${process.env.VUE_APP_COMMON_ERROR_PAGE}?message=${encodeURIComponent('抱歉，你访问的页面不存在')}&errorCode=404`;
         var redirect404Path = extOptions.redirect404Path || '/';
 
@@ -54,7 +55,7 @@ export default class BaseRouter extends VueRouter {
     }
 
     /**
-     * 从 URL 参数中指定路由
+     * 从 URL 参数中指定路由并统一输入参数
      */
     routeByQueryString() {
         this.beforeEach(function(to, from, next) {
@@ -74,7 +75,7 @@ export default class BaseRouter extends VueRouter {
     }
 
     /**
-     * 通过 `meta.title` 更新页面标题
+     * 自动更新页面标题
      * 
      * 另外的实现方案有: vue-meta
      */
@@ -94,7 +95,7 @@ export default class BaseRouter extends VueRouter {
     }
 
     /**
-     * 获取 `meta.xxx` 中的参数上报 PV
+     * 自动上报 PV
      * 
      * @abstract
      */
