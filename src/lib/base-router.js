@@ -11,8 +11,8 @@ var queryParam = new QsMan(window.location.search).getObject();
  * 
  * 目前提供的扩展
  * - 404 机制(当未匹配到路由规则时的处理机制)
- * - 自动更新页面标题(在路由切换时自动更新标题)
- * - 自动上报 PV(在路由切换时自动上报)
+ * - 自动更新页面标题(在路由切换时自动更新标题 `meta.title`)
+ * - 自动上报 PV(在路由切换时自动上报, 需自定义实现 `meta.xxx`)
  * - 从 URL 参数中指定路由并统一输入参数(用于解决 hash 路由模式时, 参数夹杂在 URL querystring 和 hash 里面引起的疑惑和风险)
  */
 export default class BaseRouter extends VueRouter {
@@ -94,7 +94,7 @@ export default class BaseRouter extends VueRouter {
     }
 
     /**
-     * 获取 `meta` 中的参数上报 PV
+     * 获取 `meta.xxx` 中的参数上报 PV
      * 
      * @abstract
      */
