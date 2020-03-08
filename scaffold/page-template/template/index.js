@@ -17,6 +17,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 <% if (router) { %>
+Vue.use(BaseRouter);
 var router = new BaseRouter({
     routes: [{
         path: '/',

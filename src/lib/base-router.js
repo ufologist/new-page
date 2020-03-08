@@ -1,8 +1,5 @@
-import Vue from 'vue';
 import VueRouter from 'vue-router';
 import QsMan from 'qsman';
-
-Vue.use(VueRouter);
 
 var queryParam = new QsMan(window.location.search).getObject();
 
@@ -14,8 +11,12 @@ var queryParam = new QsMan(window.location.search).getObject();
  * - 自动上报 PV(在路由切换时自动上报, 需自定义实现 `meta.xxx`)
  * - 从 URL 参数中指定路由并统一输入参数(用于解决 hash 路由模式时, 参数夹杂在 URL querystring 和 hash 里面引起的疑惑和风险)
  */
-export default class BaseRouter extends VueRouter {
+class BaseRouter extends VueRouter {
     /**
+     * 构造函数
+     * 
+     * @param {*} options 与 VueRouter 一样
+     * @param {object} [extOptions] 扩展选项
      * 
      * 未匹配到路由规则时的 redirect 机制(404机制)
      * - 什么都不设置时, 跳转到默认页面
@@ -23,8 +24,6 @@ export default class BaseRouter extends VueRouter {
      * - 当 `extOptions.redirect404Page` 设置为 `falsy` 时, 重定向到默认的 path: `/`
      * - 当 `extOptions.redirect404Page` 设置为 `falsy` 并同时设置 `extOptions.redirect404Path` 时, 重定向到 `redirect404Path` 指定的 path
      * 
-     * @param {*} options 与 VueRouter 一样
-     * @param {object} [extOptions] 扩展选项
      * @param {string} [extOptions.redirect404Page] 未匹配到路由规则时跳转到的页面
      * @param {string} [extOptions.redirect404Path] 未匹配到路由规则时重定向到的 path
      */
@@ -60,7 +59,8 @@ export default class BaseRouter extends VueRouter {
         this.beforeEach(function(to, from, next) {
             var queryStringRoutePath = queryParam._path;
 
-            if (queryStringRoutePath && queryStringRoutePath !== '/' && to.path === '/') {
+            // 当路由是初始 path 时, 即在 URL 上没有带 hash 路径时才激活这个机制
+            if (to.path === '/' && queryStringRoutePath && queryStringRoutePath !== '/') {
                 delete queryParam._path;
                 next({
                     replace: true,
@@ -112,3 +112,7 @@ export default class BaseRouter extends VueRouter {
         });
     }
 }
+
+BaseRouter.install = VueRouter.install;
+
+export default BaseRouter;
