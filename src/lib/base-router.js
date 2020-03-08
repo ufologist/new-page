@@ -9,7 +9,6 @@ var queryParam = new QsMan(window.location.search).getObject();
 /**
  * 基础路由器
  * 
- * 目前提供的扩展
  * - 404 机制(当未匹配到路由规则时的处理机制)
  * - 自动更新页面标题(在路由切换时自动更新标题 `meta.title`)
  * - 自动上报 PV(在路由切换时自动上报, 需自定义实现 `meta.xxx`)
@@ -30,10 +29,10 @@ export default class BaseRouter extends VueRouter {
      * @param {string} [extOptions.redirect404Path] 未匹配到路由规则时重定向到的 path
      */
     constructor(options, extOptions = {}) {
-        // 404 机制
         var redirect404Page = typeof extOptions.redirect404Page !== 'undefined' ? extOptions.redirect404Page : `${process.env.VUE_APP_COMMON_ERROR_PAGE}?message=${encodeURIComponent('抱歉，你访问的页面不存在')}&errorCode=404`;
         var redirect404Path = extOptions.redirect404Path || '/';
 
+        // 404 机制
         options.routes.push({
             path: '*',
             redirect: function(to) {
