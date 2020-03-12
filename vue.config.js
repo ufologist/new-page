@@ -68,6 +68,22 @@ function loadPageEnv(page) {
     }
 }
 
+/**
+ * 获取依赖的名称
+ * 
+ * @param {object} dependenciesObject 
+ * @return {Array<string>}
+ */
+function getDependencies(dependenciesObject) {
+    var dependencies = [];
+    for (var dependencyName in dependenciesObject) {
+        if (dependenciesObject.hasOwnProperty(dependencyName)) {
+            dependencies.push(dependencyName);
+        }
+    }
+    return dependencies;
+}
+
 // https://github.com/vuejs/vue-cli/blob/01e36f30cfbc82814cf0fea8da1c408667daa052/packages/%40vue/cli-service/lib/util/resolveClientEnv.js
 function resolveClientEnv(publicPath, raw) {
   const prefixRE = /^VUE_APP_/
@@ -112,6 +128,11 @@ module.exports = {
         disableHostCheck: true
     },
     productionSourceMap: false,
+    // 默认情况下 babel-loader 会忽略所有 node_modules 中的文件
+    // 如果你想要通过 Babel 显式转译一个依赖，可以在这个选项中列出来
+    // 这会为该依赖同时开启语法转换和根据使用情况检测 polyfill
+    // 但是这个方案没有办法处理第三方依赖的依赖(平行放置在 node_modules 目录下)
+    transpileDependencies: process.env.NODE_ENV === 'production' ? getDependencies(pkg.dependencies) : [],
     chainWebpack: function(webpackConfig) {
         var isDev = process.env.NODE_ENV === 'development';
         var isProd = process.env.NODE_ENV === 'production';
