@@ -92,12 +92,17 @@ function resolveClientEnv(publicPath, raw) {
   }
 }
 
+var publicPath = './';
 var latestGitLog = getLatestGitLog();
+var transpileDependencies = Object.keys(pkg.dependencies).filter(function(dependency) {
+    // 有些第三方库可以确定不做 transpile 的, 可以在这里排除掉
+    var ignoreDependency = [];
+    return ignoreDependency.indexOf(dependency) === -1;
+});
 // 环境变量
 process.env.VUE_APP_PAGE = __page__;
 loadPageEnv(__page__);
 
-var publicPath = './';
 module.exports = {
     publicPath: publicPath,
     outputDir: `dist/${__page__}`,
@@ -122,7 +127,7 @@ module.exports = {
     // - iOS10+, Android4.4+
     // - Node8.10+
     // https://caniuse.com/#feat=es6
-    transpileDependencies: process.env.NODE_ENV === 'production' ? Object.keys(pkg.dependencies) : [],
+    transpileDependencies: process.env.NODE_ENV === 'production' ? transpileDependencies : [],
     chainWebpack: function(webpackConfig) {
         var isDev = process.env.NODE_ENV === 'development';
         var isProd = process.env.NODE_ENV === 'production';
