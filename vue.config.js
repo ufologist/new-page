@@ -68,22 +68,6 @@ function loadPageEnv(page) {
     }
 }
 
-/**
- * 获取依赖的名称
- * 
- * @param {object} dependenciesObject 
- * @return {Array<string>}
- */
-function getDependencies(dependenciesObject) {
-    var dependencies = [];
-    for (var dependencyName in dependenciesObject) {
-        if (dependenciesObject.hasOwnProperty(dependencyName)) {
-            dependencies.push(dependencyName);
-        }
-    }
-    return dependencies;
-}
-
 // https://github.com/vuejs/vue-cli/blob/01e36f30cfbc82814cf0fea8da1c408667daa052/packages/%40vue/cli-service/lib/util/resolveClientEnv.js
 function resolveClientEnv(publicPath, raw) {
   const prefixRE = /^VUE_APP_/
@@ -138,7 +122,7 @@ module.exports = {
     // - iOS10+, Android4.4+
     // - Node8.10+
     // https://caniuse.com/#feat=es6
-    transpileDependencies: process.env.NODE_ENV === 'production' ? getDependencies(pkg.dependencies) : [],
+    transpileDependencies: process.env.NODE_ENV === 'production' ? Object.keys(pkg.dependencies) : [],
     chainWebpack: function(webpackConfig) {
         var isDev = process.env.NODE_ENV === 'development';
         var isProd = process.env.NODE_ENV === 'production';
