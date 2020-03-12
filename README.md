@@ -130,7 +130,6 @@
 
 ## TODO
 
-* @babel/polyfill
 * commitizen 规则
 * eslint 规则
 * prettier 规则

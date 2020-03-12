@@ -1,4 +1,6 @@
 // 第三方模块
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import Vue from 'vue';
 import * as fundebug from 'fundebug-javascript';
 import fundebugVue from 'fundebug-vue';
