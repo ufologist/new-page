@@ -122,9 +122,15 @@ module.exports = {
     // 这会为该依赖同时开启语法转换和根据使用情况检测 polyfill
     // 这个配置同样不能对第三方依赖的依赖产生作用, 好在这种问题的概率一般很小, 但都是第三方依赖, 谁说得准呢
     // 因此还是建议上线前使用低版本的浏览器(例如 chrome 40 版本)测试一下(主要是语法方面的例如箭头函数)
-    // 对于支持 ES2015 的环境做到心中有数
+    // 对于 JS 各版本支持的环境做到心中有数
+    // ES5(基本上现代的浏览器都支持, 不用考虑太多兼容性问题)
+    // - IE9+, Chrome23+, Firefox21+
+    // - iOS6+, Android4.4+
+    // - Node8.10+
+    // https://caniuse.com/#feat=es5
+    // ES2015
     // - Chrome51+, IE11+, Edge12+, Firefox54+
-    // - iOS10+, Android4.4+
+    // - iOS10+, Android5+
     // - Node8.10+
     // https://caniuse.com/#feat=es6
     transpileDependencies: process.env.NODE_ENV === 'production' ? transpileDependencies : [],
