@@ -27,7 +27,7 @@ module.exports = {
                             isValid = true;
                         }
                     } else {
-                        console.info(this.chalk.red('\n页面名称只允许小写的英文字母和数字'));
+                        console.info(this.chalk.red('\n页面名称只允许小写的英文字母, 数字和连字符(-)'));
                     }
                 }
 
