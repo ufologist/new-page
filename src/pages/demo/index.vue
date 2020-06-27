@@ -3,6 +3,11 @@
     <div class="index__demo"></div>
     <h1 class="index__title">常用公共库使用示例</h1>
 
+    <h2 class="index__section"><a href="https://github.com/ecomfe/est" target="_blank">EFE Styling Toolkit based on Less</a></h2>
+    <div class="index__example">
+        <p class="index__style-utilities">省略号样式，当文字超过容器宽度时，超出部分文字隐藏并显示省略号。</p>
+    </div>
+
     <h2 class="index__section"><a href="https://github.com/ufologist/qsman" target="_blank">URL Params</a></h2>
     <div class="index__example">
         <pre>{{ urlParams }}</pre>
@@ -364,6 +369,11 @@ export default {
         background-image: url("./res/demo.png");
         background-repeat: no-repeat;
         background-size: contain;
+    }
+
+    &__style-utilities {
+        width: 100px;
+        .ellipsis();
     }
 
     &__title {

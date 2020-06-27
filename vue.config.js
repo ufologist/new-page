@@ -4,6 +4,7 @@ var childProcess = require('child_process');
 var yargs = require('yargs');
 var webpack = require('webpack');
 var dotenv = require('dotenv');
+var Est = require('less-plugin-est');
 
 var pkg = require('./package.json');
 
@@ -117,6 +118,16 @@ module.exports = {
         disableHostCheck: true
     },
     productionSourceMap: false,
+    css: {
+        loaderOptions: {
+            less: {
+                plugins: [
+                    new Est()
+                ],
+                javascriptEnabled: true
+            }
+        }
+    },
     // 默认情况下 babel-loader 会忽略所有 node_modules 中的文件
     // 如果你想要通过 Babel 显式转译一个依赖，可以在这个选项中列出来
     // 这会为该依赖同时开启语法转换和根据使用情况检测 polyfill
