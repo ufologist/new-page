@@ -1,5 +1,7 @@
 import VueRouter from 'vue-router';
 import QsMan from 'qsman';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 var queryParam = new QsMan(window.location.search).getObject();
 
@@ -47,6 +49,7 @@ class BaseRouter extends VueRouter {
         });
 
         super(options);
+        this.showLoading();
         this.routeByQueryString();
         this.updateDocumentTitle();
         this.reportPv();
@@ -109,6 +112,19 @@ class BaseRouter extends VueRouter {
                 console.warn('reportPv', error);
             }
             next();
+        });
+    }
+
+    /**
+     * 路由导航时显示 loading 状态
+     */
+    showLoading() {
+        this.beforeEach(function(to, from, next) {
+            NProgress.start();
+            next();
+        });
+        this.afterEach(function(to, from) {
+            NProgress.done();
         });
     }
 }
