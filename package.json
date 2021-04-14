@@ -4,13 +4,14 @@
   "author": "Sun",
   "scripts": {
     "start": "vue-cli-service serve",
-    "build:development": "vue-cli-service build --mode=development",
-    "build:test": "vue-cli-service build --mode=test",
-    "build:stage": "vue-cli-service build --mode=stage",
-    "build:production": "vue-cli-service build --mode=production",
+    "build:development": "npm run clean && vue-cli-service build --mode=development",
+    "build:test": "npm run clean && vue-cli-service build --mode=test",
+    "build:stage": "npm run clean && vue-cli-service build --mode=stage",
+    "build:production": "npm run clean && vue-cli-service build --mode=production",
     "lint": "vue-cli-service lint",
     "new-page": "sao ./scaffold/page-template ./src/pages",
-    "test-generators": "ava ./scaffold/page-template/test/test.js"
+    "test-generators": "ava ./scaffold/page-template/test/test.js",
+    "clean": "del-cli dist -f"
   },
   "dependencies": {
     "animejs": "^3.1.0",
@@ -50,6 +51,7 @@
     "ava": "^2.4.0",
     "babel-eslint": "^10.0.3",
     "clipboardy": "^2.2.0",
+    "del-cli": "^3.0.1",
     "dotenv": "^8.2.0",
     "eslint": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.0",
