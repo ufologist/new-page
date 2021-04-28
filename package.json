@@ -62,7 +62,7 @@
     "less-loader": "^5.0.0",
     "less-plugin-est": "^3.0.1",
     "postcss-hairline": "^1.0.0",
-    "postcss-px2rem": "^0.3.0",
+    "postcss-plugin-px2rem": "^0.8.1",
     "prettier": "^1.19.0",
     "sao": "^1.7.0",
     "vue-template-compiler": "^2.6.10",
