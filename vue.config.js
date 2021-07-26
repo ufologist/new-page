@@ -11,6 +11,7 @@ var pkg = require('./package.json');
 var argv = yargs.argv;
 
 var __page__ = argv.__page__;
+var mode = argv.mode;
 
 if (!__page__) {
     console.error('请传入 __page__ 参数指定要构建的页面文件夹, 例如: npm start -- --__page__=demo');
@@ -62,7 +63,7 @@ function loadEnv(filePath) {
  */
 function loadPageEnv(page) {
     var pageBaseEnv = loadEnv(`src/pages/${page}/.env`);
-    var pageModeEnv = loadEnv(`src/pages/${page}/.env.${process.env.NODE_ENV}`);
+    var pageModeEnv = loadEnv(`src/pages/${page}/.env.${mode}`);
     var pageEnv = Object.assign(pageBaseEnv, pageModeEnv);
     for (var key in pageEnv) {
         process.env[key] = pageEnv[key];
