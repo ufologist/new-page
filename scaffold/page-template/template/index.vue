@@ -21,9 +21,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
+<% if (!router) { %>
 .index {
     &__title {
         font-size: 36px;
     }
 }
+<% } %>
 </style>

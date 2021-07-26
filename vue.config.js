@@ -102,6 +102,7 @@ var transpileDependencies = Object.keys(pkg.dependencies).filter(function(depend
 });
 // 环境变量
 process.env.VUE_APP_PAGE = __page__;
+process.env.VUE_APP_BANNER = `${pkg.name}/${__page__} | ${latestGitLog} | (c) ${pkg.author}`;
 loadPageEnv(__page__);
 
 module.exports = {
@@ -161,7 +162,7 @@ module.exports = {
 
         // 代码的全局注释
         webpackConfig.plugin('banner')
-                     .use(webpack.BannerPlugin, [`${pkg.name}/${__page__} | ${latestGitLog} | (c) ${pkg.author}`]);
+                     .use(webpack.BannerPlugin, [process.env.VUE_APP_BANNER]);
 
         if (isProd) {
             // 压缩图片
